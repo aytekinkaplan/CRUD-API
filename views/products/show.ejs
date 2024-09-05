@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= product.name %> - Product Details</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <h1>Product Details</h1>
+    <div>
+      <h2><%= product.name %></h2>
+      <p>Quantity: <%= product.quantity %></p>
+      <p>Price: $<%= product.price.toFixed(2) %></p>
+    </div>
+    <a href="/products/<%= product._id %>/edit">Edit</a>
+    <form
+      action="/products/<%= product._id %>?_method=DELETE"
+      method="POST"
+      style="display: inline"
+    >
+      <button type="submit">Delete</button>
+    </form>
+    <a href="/products">Back to Product List</a>
+  </body>
+</html>

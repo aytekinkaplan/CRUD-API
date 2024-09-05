@@ -1,44 +1,35 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Product = require("./models/product.model"); // Product modelini import et
+const path = require("path");
+const methodOverride = require("method-override");
+const productRoutes = require("./routes/product.route");
 
 const app = express();
 const port = process.env.PORT || 3000;
 const host = "localhost";
 const projectAPI = "CRUD-API";
 
+// View engine setup
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
 // Middleware
-app.use(express.json()); // JSON body parser
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(methodOverride("_method")); // Add this line
 
 // Routes
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.render("index", { title: "Welcome to the CRUD API" });
 });
 
-app.post("/api/products", async (req, res) => {
-  try {
-    const { name, quantity, price } = req.body;
-    const product = new Product({ name, quantity, price });
-    await product.save();
-    res.status(201).json({ message: "Product created successfully", product });
-  } catch (error) {
-    console.error("Error creating product:", error);
-    res
-      .status(500)
-      .json({ error: "Failed to create product", details: error.message });
-  }
-});
+app.use("/products", productRoutes);
 
-app.get("/api/products", async (req, res) => {
-  try {
-    const products = await Product.find();
-    res.json(products);
-  } catch (error) {
-    console.error("Error fetching products:", error);
-    res
-      .status(500)
-      .json({ error: "Failed to fetch products", details: error.message });
-  }
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).render("error", { error: err });
 });
 
 // MongoDB connection
