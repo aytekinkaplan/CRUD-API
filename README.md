@@ -225,6 +225,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter) - email@example.com
+Aytekin Kaplan - [@ytknkpln](https://twitter.com/ytknkpln) - email@example.com
 
-Project Link: [https://github.com/yourusername/CRUD-API](https://github.com/aytekinkaplan/CRUD-API)
+Project Link: [https://github.com/aytekinkaplan/CRUD-API](https://github.com/aytekinkaplan/CRUD-API)
