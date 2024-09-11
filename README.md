@@ -72,36 +72,41 @@ Before you begin, ensure you have met the following requirements:
 
 ## Project Structure
 
+Below is a visual representation of the project structure:
+
+```mermaid
+graph TD
+    A[CRUD-API] --> B[controllers]
+    A --> C[models]
+    A --> D[routes]
+    A --> E[views]
+    A --> F[public]
+    A --> G[index.js]
+    A --> H[package.json]
+    A --> I[README.md]
+    A --> J[.env]
+    A --> K[.gitignore]
+    B --> L[product.controller.js]
+    C --> M[product.model.js]
+    D --> N[product.route.js]
+    E --> O[products]
+    E --> P[error.ejs]
+    F --> Q[css]
+    O --> R[list.ejs]
+    O --> S[create.ejs]
+    O --> T[edit.ejs]
+    O --> U[show.ejs]
+    Q --> V[style.css]
 ```
-CRUD-API/
-│
-├── controllers/
-│   └── product.controller.js
-│
-├── models/
-│   └── product.model.js
-│
-├── routes/
-│   └── product.route.js
-│
-├── views/
-│   ├── products/
-│   │   ├── list.ejs
-│   │   ├── create.ejs
-│   │   ├── edit.ejs
-│   │   └── show.ejs
-│   └── error.ejs
-│
-├── public/
-│   └── css/
-│       └── style.css
-│
-├── .env
-├── .gitignore
-├── index.js
-├── package.json
-└── README.md
-```
+
+This diagram shows the main directories and files in the project:
+
+- `controllers/`: Contains the logic for handling requests and responses
+- `models/`: Defines the data structure and schema for the MongoDB documents
+- `routes/`: Defines the API endpoints and connects them to the controllers
+- `views/`: Contains the EJS templates for rendering the web interface
+- `public/`: Stores static assets like CSS files
+- Root files: Configuration files and the main application entry point
 
 ## Code Snippets
 
@@ -226,5 +231,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 Aytekin Kaplan - [@ytknkpln](https://twitter.com/ytknkpln) - ytknkpln@gmail.com
-
-Project Link: [https://github.com/aytekinkaplan/CRUD-API](https://github.com/aytekinkaplan/CRUD-API)
